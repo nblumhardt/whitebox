@@ -1,0 +1,28 @@
+﻿<ContentControl x:Class="Whitebox.Profiler.Controls.NavigationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:u="clr-namespace:Whitebox.Profiler.Util" xmlns:n="clr-namespace:Whitebox.Profiler.Controls" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <ContentControl.Template>
+        <ControlTemplate TargetType="n:NavigationPanel">
+            <Button Command="{Binding Command, RelativeSource={RelativeSource AncestorType=n:NavigationPanel}}">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" >
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Cursor" Value="Hand" />
+                    </Style>
+                </Button.Style>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.Column="0" HorizontalAlignment="Stretch" Margin="3" />
+                    <u:XImage Grid.Column="2" Margin="5" Source="..\Resources\Forward-16.png" />
+                </Grid>
+            </Button>
+        </ControlTemplate>
+    </ContentControl.Template>
+</ContentControl>

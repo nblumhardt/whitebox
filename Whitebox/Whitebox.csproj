@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F4E62357-C778-4D33-8B8D-77C0E1BF4BB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Whitebox</RootNamespace>
+    <AssemblyName>Whitebox</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connector\Constants.cs" />
+    <Compile Include="Connector\IReadQueue.cs" />
+    <Compile Include="Connector\IWriteQueue.cs" />
+    <Compile Include="Connector\InProcQueue.cs" />
+    <Compile Include="Connector\NamedPipesWriteQueue.cs" />
+    <Compile Include="Connector\NullQueue.cs" />
+    <Compile Include="Messages\InstanceLookupBeginningMessage.cs" />
+    <Compile Include="Messages\InstanceLookupCompletionBeginningMessage.cs" />
+    <Compile Include="Messages\InstanceLookupCompletionEndingMessage.cs" />
+    <Compile Include="Messages\InstanceLookupEndingMessage.cs" />
+    <Compile Include="Messages\ComponentAddedMessage.cs" />
+    <Compile Include="Messages\ContainerInitialisedMessage.cs" />
+    <Compile Include="Messages\LifetimeScopeBeginningMessage.cs" />
+    <Compile Include="Messages\LifetimeScopeEndingMessage.cs" />
+    <Compile Include="Messages\ProfilerConnectedMessage.cs" />
+    <Compile Include="Messages\RegistrationSourceAddedMessage.cs" />
+    <Compile Include="Messages\ResolveOperationBeginningMessage.cs" />
+    <Compile Include="Messages\ResolveOperationEndingMessage.cs" />
+    <Compile Include="Messages\TypeDiscoveredMessage.cs" />
+    <Compile Include="Model\ActivatorModel.cs" />
+    <Compile Include="Model\ComponentModel.cs" />
+    <Compile Include="Model\InstanceLookupModel.cs" />
+    <Compile Include="Model\LifetimeScopeModel.cs" />
+    <Compile Include="Model\OwnershipModel.cs" />
+    <Compile Include="Model\LifetimeModel.cs" />
+    <Compile Include="Model\ParameterModel.cs" />
+    <Compile Include="Model\RegistrationSourceModel.cs" />
+    <Compile Include="Model\ResolveOperationModel.cs" />
+    <Compile Include="Model\ServiceModel.cs" />
+    <Compile Include="Model\SharingModel.cs" />
+    <Compile Include="Model\TypeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Disposable.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

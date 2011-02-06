@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92ADBC52-7122-4583-B0C0-AA2984215C4D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Whitebox.Profiler</RootNamespace>
+    <AssemblyName>Whitebox.Profiler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Whitebox.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=2.4.3.700, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.2.4.3.700\lib\NET40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Configuration, Version=2.4.3.700, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.2.4.3.700\lib\NET40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Transitionals">
+      <HintPath>..\References\Transitionals\Transitionals.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ApplicationEventHandlers\HistoricalItemStore.cs" />
+    <Compile Include="Controls\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NavigationPanel.xaml.cs">
+      <DependentUpon>NavigationPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Analysis\AnalysisView.xaml.cs">
+      <DependentUpon>AnalysisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Analysis\AnalysisViewModel.cs" />
+    <Compile Include="Features\Components\ComponentsView.xaml.cs">
+      <DependentUpon>ComponentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Components\ComponentsViewModel.cs" />
+    <Compile Include="Features\Components\ComponentViewModel.cs" />
+    <Compile Include="Features\Components\RegistrationSourceViewModel.cs" />
+    <Compile Include="Features\ResolveOperations\IHistoricalItemStore.cs" />
+    <Compile Include="ApplicationEventHandlers\PreDisplayEventViewItemStore.cs" />
+    <Compile Include="Behaviours\ILoadUnloadAware.cs" />
+    <Compile Include="Behaviours\LoadUnload.cs" />
+    <Compile Include="Features\Events\EventsView.xaml.cs">
+      <DependentUpon>EventsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Events\EventsViewModel.cs" />
+    <Compile Include="Features\Events\EventViewModel.cs" />
+    <Compile Include="Features\Events\IPreDisplayEventViewItemStore.cs" />
+    <Compile Include="Features\Events\MessageEventViewModel.cs" />
+    <Compile Include="Features\Events\ResolveOperationEventViewModel.cs" />
+    <Compile Include="Features\Messages\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Messages\MessageViewModel.cs" />
+    <Compile Include="Features\ResolveOperations\InstanceLookupViewModel.cs" />
+    <Compile Include="Features\ResolveOperations\ResolveOperationView.xaml.cs">
+      <DependentUpon>ResolveOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ResolveOperations\ResolveOperationViewModel.cs" />
+    <Compile Include="Features\ResolveOperations\SubResolveOperationViewModel.cs" />
+    <Compile Include="Navigation\INavigator.cs" />
+    <Compile Include="Navigation\NavigationJournal.cs" />
+    <Compile Include="Navigation\NavigationViewFactory.cs" />
+    <Compile Include="Navigation\IViewMetadata.cs" />
+    <Compile Include="Navigation\NavigationEntry.cs" />
+    <Compile Include="Features\Waiting\WaitingView.xaml.cs">
+      <DependentUpon>WaitingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Waiting\WaitingViewModel.cs" />
+    <Compile Include="ProfilerSession.cs" />
+    <Compile Include="Transitions\SlideDirection.cs" />
+    <Compile Include="Transitions\SlideTransition.cs" />
+    <Compile Include="Util\Traverse.cs" />
+    <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Util\DispatcherDispatcher.cs" />
+    <Compile Include="Util\IDispatcher.cs" />
+    <Compile Include="Features\Session\SessionConnectedEventArgs.cs" />
+    <Compile Include="Features\Session\SessionView.xaml.cs">
+      <DependentUpon>SessionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Session\SessionViewModel.cs" />
+    <Compile Include="ProfilerEvent.cs" />
+    <Compile Include="ProfilerWindowView.xaml.cs">
+      <DependentUpon>ProfilerWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilerWindowViewModel.cs" />
+    <Compile Include="Util\RelayCommand.cs" />
+    <Compile Include="ValueConverters\IsNotNullConverter.cs" />
+    <Compile Include="ValueConverters\OneToManyConverter.cs" />
+    <Compile Include="ViewModel.cs" />
+    <Compile Include="Util\XImage.cs" />
+    <Page Include="Controls\ImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NavigationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Analysis\AnalysisView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Components\ComponentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Events\EventsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Messages\MessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ResolveOperations\ResolveOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Session\SessionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Waiting\WaitingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppModule.cs" />
+    <Page Include="ProfilerWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Whitebox.Core\Whitebox.Core.csproj">
+      <Project>{66051587-0845-4A16-B5E9-608E94A7F53C}</Project>
+      <Name>Whitebox.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Whitebox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Back-24.png" />
+    <Resource Include="Resources\Close-12.png" />
+    <Resource Include="Resources\Error-24.png" />
+    <Resource Include="Resources\Info-24.png" />
+    <Resource Include="Resources\ResolveOperation-24.png" />
+    <Resource Include="Resources\Warning-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pause-12.png" />
+    <Resource Include="Resources\Play-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Forward-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Components-24.png" />
+    <Resource Include="Resources\Events-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Analysis-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Clear-12.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

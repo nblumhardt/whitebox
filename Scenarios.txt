@@ -1,0 +1,21 @@
+Load container configuration from a config file
+Examine a running container
+Load container configuration from a directory of parts*
+Find the containers running in a process
+Determine which components can be activated
+See the lifetime associated with a component
+See the lifetime that will result from the dependent components of a component
+See the sharing model of a component
+See which components are disposable
+See which components will be tracked because of their dependencies*
+See the activation counts of a component
+See the services a component provides
+See the services a component consumes
+See the concrete implementation that will fulfil a dependency
+Find components based on their concrete types
+Find components based on the services they provide
+Find components based on the services they consume
+Identify scenarios in which singletons will create non-owned disposable resources
+Identify scenarios in which singletons will hold references to transient disposable resources
+Attach to a running web application
+Attach to a running WPF application

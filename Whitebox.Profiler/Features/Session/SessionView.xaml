@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Whitebox.Profiler.Features.Session.SessionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:transc="clr-namespace:Transitionals.Controls;assembly=Transitionals"
+             xmlns:t="clr-namespace:Whitebox.Profiler.Transitions" xmlns:u="clr-namespace:Whitebox.Profiler.Util" xmlns:c="clr-namespace:Whitebox.Profiler.Controls" mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <c:ImageButton Command="{Binding NavigateBack}" ImageSource="..\..\Resources\Back-24.png" Margin="5" />
+        <Grid Grid.Row="0" Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Text="{Binding Title}" FontSize="16" FontWeight="SemiBold"  />
+            <TextBlock Grid.Row="1" Text="{Binding ProcessDescription}" FontStyle="Italic" TextWrapping="Wrap"/>
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Horizontal">
+                <c:ImageButton Command="{Binding GoToEvents}" ImageSource="..\..\Resources\Events-24.png" />
+                <c:ImageButton Command="{Binding GoToComponents}" ImageSource="..\..\Resources\Components-24.png" />
+                <c:ImageButton Command="{Binding GoToAnalysis}" ImageSource="..\..\Resources\Analysis-24.png" />
+            </StackPanel>
+        </Grid>
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Background="White" Padding="5">
+            <transc:TransitionElement x:Name="CurrentView" Content="{Binding CurrentViewContent}">
+                <transc:TransitionElement.Transition>
+                    <t:SlideTransition x:Name="SlideTransition"/>
+                </transc:TransitionElement.Transition>
+            </transc:TransitionElement>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
