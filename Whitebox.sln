@@ -26,12 +26,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whitebox.Core", "Whitebox.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whitebox.Core.Tests", "Whitebox.Core.Tests\Whitebox.Core.Tests.csproj", "{FF98681B-01EA-4DA4-B4B8-B2E4C788EDC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whitebox.Web", "Whitebox.Web\Whitebox.Web.csproj", "{EB70662A-B960-4737-934F-48A13182153B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{EF8892E0-D91B-495F-ABE7-2C4D69F79C8D}"
 	ProjectSection(SolutionItems) = preProject
 		Assets\Icons.svg = Assets\Icons.svg
-		Assets\Whitebox Screens.pptx = Assets\Whitebox Screens.pptx
 		Assets\Whitebox-16.png = Assets\Whitebox-16.png
 		Assets\Whitebox-32.png = Assets\Whitebox-32.png
 		Assets\Whitebox-64.png = Assets\Whitebox-64.png
@@ -141,16 +138,6 @@ Global
 		{FF98681B-01EA-4DA4-B4B8-B2E4C788EDC8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FF98681B-01EA-4DA4-B4B8-B2E4C788EDC8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FF98681B-01EA-4DA4-B4B8-B2E4C788EDC8}.Release|x86.ActiveCfg = Release|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{EB70662A-B960-4737-934F-48A13182153B}.Release|x86.ActiveCfg = Release|Any CPU
 		{D791F607-DDB9-420A-8BBA-C008ED5641B0}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{D791F607-DDB9-420A-8BBA-C008ED5641B0}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{D791F607-DDB9-420A-8BBA-C008ED5641B0}.Debug|Mixed Platforms.Build.0 = Debug|x86

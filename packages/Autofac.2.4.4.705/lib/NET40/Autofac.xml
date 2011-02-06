@@ -969,6 +969,27 @@
             The lifetime scope that is ending.
             </summary>
         </member>
+        <member name="T:Autofac.Core.Lifetime.LifetimeScopeResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Autofac.Core.Lifetime.LifetimeScopeResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Autofac.Core.Lifetime.LifetimeScopeResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Autofac.Core.Lifetime.LifetimeScopeResources.ScopeIsDisposed">
+            <summary>
+              Looks up a localized string similar to Instances cannot be resolved and nested lifetimes cannot be created from this LifetimeScope as it has already been disposed..
+            </summary>
+        </member>
         <member name="T:Autofac.Core.RegistrationSourceAddedEventArgs">
             <summary>
             Fired when an <see cref="T:Autofac.Core.IRegistrationSource"/> is added to the registry.
@@ -1130,6 +1151,11 @@
             Releases unmanaged and - optionally - managed resources
             </summary>
             <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:Autofac.Util.Disposable.IsDisposed">
+            <summary>
+            Returns true if the current instance has been disposed; otherwise false;
+            </summary>
         </member>
         <member name="T:Autofac.Core.IComponentRegistration">
             <summary>
@@ -3651,6 +3677,11 @@
         <member name="P:Autofac.Core.Resolving.ResolveOperationResources.MaxDepthExceeded">
             <summary>
               Looks up a localized string similar to Probable circular dependency between factory-scoped components. Chain includes &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Autofac.Core.Resolving.ResolveOperationResources.TemporaryContextDisposed">
+            <summary>
+              Looks up a localized string similar to This resolve operation has already ended. When registering components using lambdas, the IComponentContext &apos;c&apos; parameter to the lambda cannot be stored. Instead, either resolve IComponentContext again from &apos;c&apos;, or resolve a Func&lt;&gt; based factory to create subsequent components from..
             </summary>
         </member>
         <member name="T:Autofac.Core.TypedService">

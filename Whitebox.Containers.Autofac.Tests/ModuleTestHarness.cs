@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Autofac;
+using Autofac.Core;
 
 namespace Whitebox.Containers.Autofac.Tests
 {
@@ -11,6 +13,8 @@ namespace Whitebox.Containers.Autofac.Tests
         readonly IContainer _container;
         readonly WhiteboxProfilingModule _module;
         readonly ModelMapper _modelMapper;
+        readonly ILifetimeScope _rootScope;
+        static readonly FieldInfo RootScopeField = typeof(Container).GetField("_rootLifetimeScope", BindingFlags.NonPublic | BindingFlags.Instance);
 
         public ModuleTestHarness() : this (cb => {}) { }
 
@@ -24,6 +28,7 @@ namespace Whitebox.Containers.Autofac.Tests
             builder.RegisterModule(_module);
             configurationAction(builder);
             _container = builder.Build();
+            _rootScope = (ILifetimeScope) RootScopeField.GetValue(_container);
             _messages = queue.Messages;
         }
 
@@ -56,13 +61,13 @@ namespace Whitebox.Containers.Autofac.Tests
         {
             var scope = lifetimeScope;
             if (lifetimeScope is IContainer)
-                scope = lifetimeScope.Resolve<ILifetimeScope>();
+                scope = _rootScope;
             return _module.ModelMapper.IdTracker.GetIdOrFail(scope);
         }
 
         public string RootScopeId
         {
-            get { return GetLifetimeScopeId(Container); }
+            get { return GetLifetimeScopeId(_rootScope); }
         }
     }
 }
