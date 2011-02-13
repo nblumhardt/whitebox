@@ -34,8 +34,11 @@ namespace Whitebox.Profiler.Features.Events
             _navigator = navigator;
             PauseResume = new RelayCommand(OnPauseResume);
             Clear = new RelayCommand(OnClear);
-            _eventBus.Subscribe(this);
-            preDisplayEventViewItemStore.Unload(this);
+            _dispacher.Background(() =>
+            {
+                _eventBus.Subscribe(this);
+                preDisplayEventViewItemStore.Unload(this);
+            });
         }
 
         public ICommand PauseResume { get; private set; }
@@ -71,7 +74,7 @@ namespace Whitebox.Profiler.Features.Events
                 return;
 
             var vm = new MessageEventViewModel(applicationEvent.Relevance, applicationEvent.Title, applicationEvent.Message);
-            _dispacher.BeginInvoke(() => _events.Insert(0, vm));
+            _dispacher.Foreground(() => _events.Insert(0, vm));
         }
 
         public void Dispose()
@@ -88,7 +91,7 @@ namespace Whitebox.Profiler.Features.Events
             {
                 var vm = new ResolveOperationEventViewModel(applicationEvent.Item.Id, _navigator);
 
-                _dispacher.BeginInvoke(() =>
+                _dispacher.Foreground(() =>
                 {
                     _events.Insert(0, vm);
                 });
@@ -103,7 +106,7 @@ namespace Whitebox.Profiler.Features.Events
             if (applicationEvent.Item.CallingMethod != null)
                 locationDescription = applicationEvent.Item.CallingMethod.DisplayName;
 
-            _dispacher.BeginInvoke(() =>
+            _dispacher.Foreground(() =>
             {
                 ResolveOperationEventViewModel resolveOperation;
                 if (TryGetResolveOperationEvent(resolveOperationId, out resolveOperation))

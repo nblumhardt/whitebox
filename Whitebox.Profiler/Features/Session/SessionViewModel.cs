@@ -78,7 +78,7 @@ namespace Whitebox.Profiler.Features.Session
 
         public void Handle(ProfilerConnectedEvent e)
         {
-            _dispatcher.BeginInvoke(() =>
+            _dispatcher.Foreground(() =>
             {
                 _isConnected = true;
                 ProcessDescription = e.Name + " (" + e.Id + ")";

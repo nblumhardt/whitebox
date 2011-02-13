@@ -8,6 +8,7 @@ using System.Windows.Data;
 using Whitebox.Core;
 using Whitebox.Core.Application;
 using Whitebox.Core.Session;
+using Whitebox.Profiler.Display;
 using Whitebox.Profiler.Features.ResolveOperations;
 using Whitebox.Profiler.Navigation;
 using Whitebox.Profiler.Util;
@@ -32,8 +33,7 @@ namespace Whitebox.Profiler.Features.Components
             IHistoricalItemStore<Component> components,
             IHistoricalItemStore<RegistrationSource> registrationSources, 
             IApplicationEventBus applicationEventBus, 
-            IDispatcher dispatcher,
-            IProfilerSession session)
+            IDispatcher dispatcher)
         {
             _navigator = navigator;
             _applicationEventBus = applicationEventBus;
@@ -41,13 +41,13 @@ namespace Whitebox.Profiler.Features.Components
             _filteredSortedComponents = new ListCollectionView(_components);
             _filteredSortedComponents.SortDescriptions.Add(new SortDescription("Description", ListSortDirection.Ascending));
 
-            session.BeginInvoke(() =>
+            dispatcher.Background(() =>
             {
                 _applicationEventBus.Subscribe(this);
                 var vms = new List<object>();
                 vms.AddRange(components.GetItems().Select(CreateViewModel));
                 vms.AddRange(registrationSources.GetItems().Select(CreateViewModel));
-                dispatcher.BeginInvoke(() =>
+                dispatcher.Foreground(() =>
                 {
                     foreach (var vm in vms)
                         _components.Add(vm);
@@ -60,19 +60,12 @@ namespace Whitebox.Profiler.Features.Components
         public void Handle(ItemCreatedEvent<Component> applicationEvent)
         {
             var vm = CreateViewModel(applicationEvent.Item);
-            _dispatcher.BeginInvoke(() => _components.Add(vm));
+            _dispatcher.Foreground(() => _components.Add(vm));
         }
 
         ComponentViewModel CreateViewModel(Component component)
         {
-            return new ComponentViewModel(component.Id, _navigator, component.Description, component.Services.Select(s => DescribeService(component, s)));
-        }
-
-        static string DescribeService(Component component, Service service)
-        {
-            if (service.IsTypedService && service.ServiceType == component.LimitType)
-                return "self";
-            return service.Description;
+            return new ComponentViewModel(component.Id, _navigator, component.Description, component.DescribeServices());
         }
 
         RegistrationSourceViewModel CreateViewModel(RegistrationSource registrationSource)
@@ -88,7 +81,7 @@ namespace Whitebox.Profiler.Features.Components
         public void Handle(ItemCreatedEvent<RegistrationSource> applicationEvent)
         {
             var vm = CreateViewModel(applicationEvent.Item);
-            _dispatcher.BeginInvoke(() => _components.Add(vm));
+            _dispatcher.Foreground(() => _components.Add(vm));
         }
     }
 }

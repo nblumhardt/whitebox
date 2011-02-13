@@ -72,10 +72,15 @@
     <Compile Include="Controls\NavigationPanel.xaml.cs">
       <DependentUpon>NavigationPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Display\ComponentExtensions.cs" />
     <Compile Include="Features\Analysis\AnalysisView.xaml.cs">
       <DependentUpon>AnalysisView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Analysis\AnalysisViewModel.cs" />
+    <Compile Include="Features\ComponentDetail\ComponentDetailViewModel.cs" />
+    <Compile Include="Features\ComponentDetail\ComponentDetailView.xaml.cs">
+      <DependentUpon>ComponentDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Components\ComponentsView.xaml.cs">
       <DependentUpon>ComponentsView.xaml</DependentUpon>
     </Compile>
@@ -118,7 +123,7 @@
     <Compile Include="Transitions\SlideTransition.cs" />
     <Compile Include="Util\Traverse.cs" />
     <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Util\DispatcherDispatcher.cs" />
+    <Compile Include="Util\UIProfilerSessionDispatcher.cs" />
     <Compile Include="Util\IDispatcher.cs" />
     <Compile Include="Features\Session\SessionConnectedEventArgs.cs" />
     <Compile Include="Features\Session\SessionView.xaml.cs">
@@ -144,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Analysis\AnalysisView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\ComponentDetail\ComponentDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

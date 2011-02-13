@@ -6,6 +6,7 @@ using Whitebox.Core;
 using Whitebox.Core.Application;
 using Whitebox.Profiler.ApplicationEventHandlers;
 using Whitebox.Profiler.Features.Analysis;
+using Whitebox.Profiler.Features.ComponentDetail;
 using Whitebox.Profiler.Features.Components;
 using Whitebox.Profiler.Features.Events;
 using Whitebox.Profiler.Features.Messages;
@@ -39,6 +40,8 @@ namespace Whitebox.Profiler
 
             RegisterViewWithModel<MessageView, MessageViewModel>(builder, "Message");
 
+            RegisterViewWithModel<ComponentDetailView, ComponentDetailViewModel>(builder, "Component Detail");
+
             RegisterViewWithModel<ResolveOperationView, ResolveOperationViewModel>(builder, "Resolve Operation");
 
             RegisterViewWithModel<ComponentsView, ComponentsViewModel>(builder, "Components")
@@ -47,9 +50,9 @@ namespace Whitebox.Profiler
             RegisterViewWithModel<AnalysisView, AnalysisViewModel>(builder, "Analysis")
                 .InstancePerProfilerSession();
 
-            builder.Register(c => new DispatcherDispatcher(c.Resolve<ProfilerWindowView>().Dispatcher))
+            builder.Register(c => new UIProfilerSessionDispatcher(c.Resolve<ProfilerWindowView>().Dispatcher, c.Resolve<IProfilerSession>()))
                 .As<IDispatcher>()
-                .SingleInstance();
+                .InstancePerProfilerSession();
 
             builder.RegisterAssemblyTypes(thisAssembly)
                 .InNamespaceOf<PreDisplayEventViewItemStore>()

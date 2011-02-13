@@ -35,7 +35,9 @@ namespace Whitebox.Core.Updaters
                         throw new InvalidOperationException("The service provides an unknown type.");
                     return new Service(svc.Description, serviceType, svc.Key);
                 }),
-                message.Component.Ownership);
+                message.Component.Ownership,
+                message.Component.Sharing,
+                message.Component.Metadata);
             _components.Add(component);
         }
     }
