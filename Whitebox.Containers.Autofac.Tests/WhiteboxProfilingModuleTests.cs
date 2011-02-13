@@ -49,39 +49,27 @@ namespace Whitebox.Containers.Autofac.Tests
         public class WhenTheContainerIsInitialised
         {
             ModuleTestHarness _fixture;
-            ContainerInitialisedMessage _containerInitialisedMessage;
+            ProfilerConnectedMessage _profilerConnectedMessage;
             LifetimeScopeBeginningMessage _rootScopeBeginningMessage;
             
             [SetUp]
             public void SetUp()
             {
                 _fixture = new ModuleTestHarness();
-                _containerInitialisedMessage = _fixture.GetSingleMessageOrDefault<ContainerInitialisedMessage>();
+                _profilerConnectedMessage = _fixture.GetSingleMessageOrDefault<ProfilerConnectedMessage>();
                 _rootScopeBeginningMessage = _fixture.GetSingleMessageOrDefault<LifetimeScopeBeginningMessage>();
             }
 
             [Test]
             public void AnInitialisationMessageIsSent()
             {
-                Assert.IsNotNull(_containerInitialisedMessage);
-            }
-
-            [Test]
-            public void TheContainerIdIsPassed()
-            {
-                Assert.AreEqual(_fixture.RootScopeId, _containerInitialisedMessage.RootLifetimeScope.Id);
-            }
-
-            [Test]
-            public void TheContainerTagIsPassed()
-            {
-                Assert.AreEqual(_fixture.RootScopeId, _containerInitialisedMessage.RootLifetimeScope.Id);
+                Assert.IsNotNull(_profilerConnectedMessage);
             }
 
             [Test]
             public void TheRootScopeHasNoParent()
             {
-                Assert.IsNull(_containerInitialisedMessage.RootLifetimeScope.ParentLifetimeScopeId);
+                Assert.IsNull(_rootScopeBeginningMessage.LifetimeScope.ParentLifetimeScopeId);
             }
 
             [Test]

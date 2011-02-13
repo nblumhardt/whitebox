@@ -51,7 +51,6 @@
     <Compile Include="Messages\InstanceLookupCompletionEndingMessage.cs" />
     <Compile Include="Messages\InstanceLookupEndingMessage.cs" />
     <Compile Include="Messages\ComponentAddedMessage.cs" />
-    <Compile Include="Messages\ContainerInitialisedMessage.cs" />
     <Compile Include="Messages\LifetimeScopeBeginningMessage.cs" />
     <Compile Include="Messages\LifetimeScopeEndingMessage.cs" />
     <Compile Include="Messages\ProfilerConnectedMessage.cs" />

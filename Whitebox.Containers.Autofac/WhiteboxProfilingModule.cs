@@ -69,10 +69,6 @@ namespace Whitebox.Containers.Autofac
             if (container == null) throw new ArgumentNullException("container");
 
             var rootScope = container.Resolve<ILifetimeScope>();
-
-            var message = new ContainerInitialisedMessage(_modelMapper.GetLifetimeScopeModel(rootScope));
-
-            Send(message);
             AttachToLifetimeScope(rootScope);
         }
 
