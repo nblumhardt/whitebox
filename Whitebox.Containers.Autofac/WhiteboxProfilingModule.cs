@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using Autofac;
 using Autofac.Core;
-using Autofac.Core.Diagnostics;
 using Autofac.Core.Resolving;
 using Whitebox.Connector;
 using Whitebox.Messages;
@@ -10,7 +9,7 @@ using Whitebox.Model;
 
 namespace Whitebox.Containers.Autofac
 {
-    public class WhiteboxProfilingModule : Module, IContainerAwareComponent
+    public class WhiteboxProfilingModule : Module, IStartable
     {
         readonly IWriteQueue _client;
         readonly ModelMapper _modelMapper = new ModelMapper();
@@ -29,7 +28,9 @@ namespace Whitebox.Containers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterInstance(this).As<IContainerAwareComponent>();
+            builder.RegisterInstance(this)
+                .As<IStartable>()
+                .OnActivated(e => e.Instance.Start(e.Context.Resolve<ILifetimeScope>()));
 
             var processInfo = Process.GetCurrentProcess();
             Send(new ProfilerConnectedMessage(processInfo.MainModule.FileName, processInfo.Id));
@@ -64,12 +65,12 @@ namespace Whitebox.Containers.Autofac
             Send(message);
         }
 
-        public void SetContainer(IContainer container)
-        {
-            if (container == null) throw new ArgumentNullException("container");
+        public void Start() { }
 
-            var rootScope = container.Resolve<ILifetimeScope>();
-            AttachToLifetimeScope(rootScope);
+        public void Start(ILifetimeScope rootLifetimeScope)
+        {
+            if (rootLifetimeScope == null) throw new ArgumentNullException("rootLifetimeScope");
+            AttachToLifetimeScope(rootLifetimeScope);
         }
 
         void AttachToLifetimeScope(ILifetimeScope lifetimeScope, ILifetimeScope parent = null)
