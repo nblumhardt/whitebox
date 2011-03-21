@@ -5,35 +5,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Whitebox.Profiler.Features.Components" xmlns:ct="clr-namespace:Whitebox.Profiler.Controls" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <Style x:Key="ComponentBorder" TargetType="Border">
-            <Setter Property="CornerRadius" Value="3" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="Padding" Value="5" />
-        </Style>
-        <DataTemplate DataType="{x:Type c:ComponentViewModel}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Style="{StaticResource ComponentBorder}" BorderBrush="#50A6C2" Background="#F0F6FF">
-                    <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
-                </Border>
-                <TextBlock FontStyle="Italic" Grid.Column="1" Text="{Binding Services}" />
-            </Grid>
-        </DataTemplate>        
-        <DataTemplate DataType="{x:Type c:RegistrationSourceViewModel}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Style="{StaticResource ComponentBorder}" BorderBrush="Gray" Background="#FDF7DA">
-                    <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
-                </Border>
-            </Grid>
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Display/Styles.xaml" />
+                <ResourceDictionary>
+                    <DataTemplate DataType="{x:Type c:ComponentViewModel}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Style="{StaticResource ComponentBorder}">
+                                <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
+                            </Border>
+                            <TextBlock FontStyle="Italic" Grid.Column="1" Text="{Binding Services}" />
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type c:RegistrationSourceViewModel}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Style="{StaticResource RegistrationSourceBorder}">
+                                <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <ItemsControl ItemsSource="{Binding Components}">

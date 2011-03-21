@@ -39,7 +39,9 @@ namespace Whitebox.Profiler.Features.ResolveOperations
         static InstanceLookupViewModel BuildInstanceLookupTree(InstanceLookup instanceLookup)
         {
             return new InstanceLookupViewModel(
-                Describe(instanceLookup),
+                instanceLookup.Component.Description,
+                Describe(instanceLookup.ActivationScope),
+                !instanceLookup.SharedInstanceReused,
                 instanceLookup.DependencyLookups.Select(BuildInstanceLookupTree));
         }
 
@@ -48,27 +50,6 @@ namespace Whitebox.Profiler.Features.ResolveOperations
             if (lifetimeScope.Tag != null)
                 return lifetimeScope.Tag;
             return "level " + lifetimeScope.Level;
-        }
-
-        static string Describe(InstanceLookup instanceLookup)
-        {
-            var labels = new List<string>();
-
-            if (!instanceLookup.SharedInstanceReused)
-                labels.Add("new");
-
-            if (instanceLookup.Dependent == null || instanceLookup.ActivationScope != instanceLookup.Dependent.ActivationScope)
-                labels.Add(Describe(instanceLookup.ActivationScope));
-
-            var result = instanceLookup.Component.Description;
-            if (labels.Count != 0)
-            {
-                result += " (";
-                result += string.Join(", ", labels);
-                result += ")";
-            }
-
-            return result;
         }
     }
 }

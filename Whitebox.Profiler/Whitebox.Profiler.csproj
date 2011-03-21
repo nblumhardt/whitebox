@@ -103,7 +103,10 @@
       <DependentUpon>MessageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Messages\MessageViewModel.cs" />
+    <Compile Include="Features\ResolveOperations\InstanceLookupBackgroundConverter.cs" />
+    <Compile Include="Features\ResolveOperations\InstanceLookupBorderConverter.cs" />
     <Compile Include="Features\ResolveOperations\InstanceLookupViewModel.cs" />
+    <Compile Include="Features\ResolveOperations\LifetimeColorKey.cs" />
     <Compile Include="Features\ResolveOperations\ResolveOperationView.xaml.cs">
       <DependentUpon>ResolveOperationView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NavigationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Display\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
