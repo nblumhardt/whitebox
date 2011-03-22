@@ -5,7 +5,7 @@ using Whitebox.Core.Application;
 namespace Whitebox.Core.Analytics.TrackedInRootScope
 {
     class TrackedInstanceInRootScopeDetector :
-        IApplicationEventHandler<ItemCreatedEvent<InstanceLookup>>
+        IApplicationEventHandler<ItemCompletedEvent<InstanceLookup>>
     {
         readonly IApplicationEventQueue _applicationEventQueue;
         readonly HashSet<Component> _warnedComponents = new HashSet<Component>();
@@ -16,8 +16,11 @@ namespace Whitebox.Core.Analytics.TrackedInRootScope
             _applicationEventQueue = applicationEventQueue;
         }
 
-        public void Handle(ItemCreatedEvent<InstanceLookup> applicationEvent)
+        public void Handle(ItemCompletedEvent<InstanceLookup> applicationEvent)
         {
+            if (applicationEvent.Item.SharedInstanceReused)
+                return;
+
             var lifetime = applicationEvent.Item.ActivationScope;
             if (!lifetime.IsRootScope)
                 return;
