@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Whitebox.Autofac</id>
+    <version>0.1.1.6</version>
+    <authors>Whitebox contributors</authors>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Whitebox Autofac integration</description>
+    <summary>A module for connecting Autofac applications to the Whitebox profiler.</summary>
+    <language>en-US</language>
+    <title>Whitebox</title>
+    <projectUrl>http://whitebox.googlecode.com</projectUrl>
+    <dependencies>
+      <dependency id="Autofac" version="2.4.5.724" />
+      <dependency id="Whitebox" version="0.1.1.6" />
+    </dependencies>
+  </metadata>
+</package>

@@ -14,6 +14,7 @@ namespace Whitebox.Profiler.Features.ResolveOperations
         public InstanceLookupViewModel(string componentDescription, string lifetimeScopeDescription, bool newInstanceCreated, IEnumerable<InstanceLookupViewModel> dependencyLookups)
         {
             if (componentDescription == null) throw new ArgumentNullException("componentDescription");
+            if (lifetimeScopeDescription == null) throw new ArgumentNullException("lifetimeScopeDescription");
             if (dependencyLookups == null) throw new ArgumentNullException("dependencyLookups");
             _componentDescription = componentDescription;
             _lifetimeScopeDescription = lifetimeScopeDescription;
