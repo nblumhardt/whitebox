@@ -3,3 +3,5 @@ glob:*.suo
 glob:_ReSharper*
 glob:bin/
 glob:obj/
+glob:NuSpecs/Whitebox.Autofac/lib/NET40/
+glob:NuSpecs/Whitebox/lib/NET40/

@@ -79,7 +79,11 @@ namespace Whitebox.Core.Connector
         {
             base.Dispose(disposing);
             if (disposing)
+            {
+                _serverStream.Close();
                 _serverStream.Dispose();
+                _isConnected = false;
+            }
         }
 
         static void Trace(string message, params object[] formatArgs)

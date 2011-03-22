@@ -62,7 +62,10 @@ namespace Whitebox.Core.Session
         {
             base.Dispose(disposing);
             if (disposing)
+            {
+                _timer.Dispose();
                 _readQueue.Dispose();
+            }
         }
     }
 }
