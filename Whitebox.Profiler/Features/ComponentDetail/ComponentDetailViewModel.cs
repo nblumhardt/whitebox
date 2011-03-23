@@ -11,6 +11,12 @@ namespace Whitebox.Profiler.Features.ComponentDetail
         string _description;
         IDictionary<string, string> _metadata;
         IEnumerable<string> _services;
+        string _sharing;
+        string _lifetime;
+        string _ownership;
+        string _activator;
+        string _target;
+        string _id;
 
         public ComponentDetailViewModel(string componentId, IDispatcher dispatcher, IActiveItemRepository<Component> components)
         {
@@ -23,12 +29,24 @@ namespace Whitebox.Profiler.Features.ComponentDetail
                 var description = component.Description;
                 var services = component.DescribeServices();
                 var metadata = component.Metadata;
+                var sharing = component.Sharing;
+                var lifetime = component.Lifetime;
+                var activator = component.Activator;
+                var ownership = component.Ownership;
+                var target = component.TargetComponentId;
+                var id = component.Id;
 
                 dispatcher.Foreground(() =>
                 {
                     Description = description;
                     Metadata = metadata;
                     Services = services;
+                    Sharing = sharing.ToString();
+                    Lifetime = lifetime.ToString();
+                    Activator = activator.ToString();
+                    Ownership = ownership.ToString();
+                    Target = target;
+                    Id = id;
                 });
             });
         }
@@ -65,5 +83,72 @@ namespace Whitebox.Profiler.Features.ComponentDetail
                 NotifyPropertyChanged("Services");
             }
         }
+
+        public string Sharing
+        {
+            get { return _sharing; }
+            set
+            {
+                if (_sharing == value) return;
+                _sharing = value;
+                NotifyPropertyChanged("Sharing");
+            }
+        }
+
+        public string Lifetime
+        {
+            get { return _lifetime; }
+            set
+            {
+                if (_lifetime == value) return;
+                _lifetime = value;
+                NotifyPropertyChanged("Lifetime");
+            }
+        }
+
+        public string Ownership
+        {
+            get { return _ownership; }
+            set
+            {
+                if (_ownership == value) return;
+                _ownership = value;
+                NotifyPropertyChanged("Ownership");
+            }
+        }
+
+        public string Activator
+        {
+            get { return _activator; }
+            set
+            {
+                if (_activator == value) return;
+                _activator = value;
+                NotifyPropertyChanged("Activator");
+            }
+        }
+
+        public string Target
+        {
+            get { return _target; }
+            set
+            {
+                if (_target == value) return;
+                _target = value;
+                NotifyPropertyChanged("Target");
+            }
+        }
+
+        public string Id
+        {
+            get { return _id; }
+            set
+            {
+                if (_id == value) return;
+                _id = value;
+                NotifyPropertyChanged("Id");
+            }
+        }
     }
 }
+

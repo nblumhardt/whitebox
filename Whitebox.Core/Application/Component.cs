@@ -13,8 +13,11 @@ namespace Whitebox.Core.Application
         readonly OwnershipModel _ownership;
         readonly SharingModel _sharing;
         readonly IDictionary<string, string> _metadata;
+        readonly ActivatorModel _activator;
+        readonly LifetimeModel _lifetime;
+        readonly string _targetComponentId;
 
-        public Component(string id, TypeData limitType, IEnumerable<Service> services, OwnershipModel ownership, SharingModel sharing, IDictionary<string, string> metadata)
+        public Component(string id, TypeData limitType, IEnumerable<Service> services, OwnershipModel ownership, SharingModel sharing, IDictionary<string, string> metadata, ActivatorModel activator, LifetimeModel lifetime, string targetComponentId = null)
         {
             if (limitType == null) throw new ArgumentNullException("limitType");
             if (services == null) throw new ArgumentNullException("services");
@@ -25,6 +28,24 @@ namespace Whitebox.Core.Application
             _ownership = ownership;
             _sharing = sharing;
             _metadata = metadata;
+            _activator = activator;
+            _lifetime = lifetime;
+            _targetComponentId = targetComponentId;
+        }
+
+        public string TargetComponentId
+        {
+            get { return _targetComponentId; }
+        }
+
+        public LifetimeModel Lifetime
+        {
+            get { return _lifetime; }
+        }
+
+        public ActivatorModel Activator
+        {
+            get { return _activator; }
         }
 
         public SharingModel Sharing

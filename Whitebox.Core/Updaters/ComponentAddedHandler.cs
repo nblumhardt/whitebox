@@ -37,7 +37,10 @@ namespace Whitebox.Core.Updaters
                 }),
                 message.Component.Ownership,
                 message.Component.Sharing,
-                message.Component.Metadata);
+                message.Component.Metadata,
+                message.Component.Activator,
+                message.Component.Lifetime,
+                message.Component.TargetComponentId);
             _components.Add(component);
         }
     }

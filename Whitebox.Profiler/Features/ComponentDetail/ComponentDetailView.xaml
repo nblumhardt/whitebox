@@ -5,7 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\Display\Styles.xaml" />
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="0">Description</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="0" Grid.Column="1" Text="{Binding Description}" />        
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="1">Services</TextBlock>
+        <ItemsControl ItemsSource="{Binding Services}" Grid.Row="1" Grid.Column="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Style="{StaticResource DescriptionStyle}" Text="{Binding}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="2">Metadata</TextBlock>
+        <ItemsControl ItemsSource="{Binding Metadata}" Grid.Row="2" Grid.Column="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource DescriptionStyle}" Text="{Binding Key}" />
+                        <TextBlock> =</TextBlock>
+                        <TextBlock Style="{StaticResource DescriptionStyle}" Text="{Binding Value}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="3">Sharing</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding Sharing}" />
+        
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="4">Lifetime Model</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="4" Grid.Column="1" Text="{Binding Lifetime}" />
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="5">Ownership</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="5" Grid.Column="1" Text="{Binding Ownership}" />
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="6">Activator</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="6" Grid.Column="1" Text="{Binding Activator}" />
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="7">Adapter Target</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="7" Grid.Column="1" Text="{Binding Target}" />
+
+        <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="8">Id</TextBlock>
+        <TextBlock Style="{StaticResource DescriptionStyle}" Grid.Row="8" Grid.Column="1" Text="{Binding Id}" />
     </Grid>
 </UserControl>

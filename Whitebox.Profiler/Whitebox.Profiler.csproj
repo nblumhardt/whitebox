@@ -228,6 +228,10 @@
       <Project>{66051587-0845-4A16-B5E9-608E94A7F53C}</Project>
       <Name>Whitebox.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Whitebox\Whitebox.csproj">
+      <Project>{F4E62357-C778-4D33-8B8D-77C0E1BF4BB7}</Project>
+      <Name>Whitebox</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Whitebox.ico" />
