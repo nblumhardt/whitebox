@@ -45,10 +45,10 @@ namespace Whitebox.Core.Session
             _applicationEventQueue.Enqueue(new ClockTickEvent());
             _messageDispatcher.DispatchMessages(_readQueue);
 
-            if (_readQueue.IsConnected)
-                _timer.Change(UpdateIntervalMilliseconds, Timeout.Infinite);
-            else
+            if (!_readQueue.IsConnected)
                 Disconnected(this, new ApplicationDisconnectedEventArgs());
+
+            _timer.Change(UpdateIntervalMilliseconds, Timeout.Infinite);
         }
 
         void WaitForConnection(object state)

@@ -10,9 +10,10 @@ namespace Whitebox.Profiler.Features.ResolveOperations
 
         readonly Queue<Brush> _brushes = new Queue<Brush>(new[]
         {
-            Brushes.Olive,
+            Brushes.Gold,
             Brushes.Violet,
-            Brushes.Orange
+            Brushes.Orange,
+            Brushes.YellowGreen
         });
 
         readonly IDictionary<string, Brush> _descriptionToBrush = new Dictionary<string, Brush>();
@@ -20,7 +21,7 @@ namespace Whitebox.Profiler.Features.ResolveOperations
         public LifetimeColorKey()
         {
             _descriptionToBrush.Add("root", Brushes.Tomato);
-            _descriptionToBrush.Add("httpRequest", Brushes.SlateBlue);
+            _descriptionToBrush.Add("httpRequest", Brushes.SkyBlue);
         }
 
         public Brush GetBrush(string lifetimeDescription)
