@@ -91,10 +91,7 @@ namespace Whitebox.Profiler.Features.Events
             {
                 var vm = new ResolveOperationEventViewModel(applicationEvent.Item.Id, _navigator);
 
-                _dispacher.Foreground(() =>
-                {
-                    _events.Insert(0, vm);
-                });
+                _dispacher.Foreground(() => _events.Insert(0, vm));
             }
         }
 

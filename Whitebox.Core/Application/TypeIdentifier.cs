@@ -76,9 +76,9 @@ namespace Whitebox.Core.Application
             {
                 var lastPunc = 0;
                 if (FullName.Contains('.'))
-                    lastPunc = FullName.LastIndexOf(".");
+                    lastPunc = FullName.LastIndexOf(".", StringComparison.Ordinal);
                 if (FullName.Contains('+'))
-                    lastPunc = Math.Max(FullName.LastIndexOf("+"), lastPunc);
+                    lastPunc = Math.Max(FullName.LastIndexOf("+", StringComparison.Ordinal), lastPunc);
                 return FullName.Substring(lastPunc + 1);
             }
         }

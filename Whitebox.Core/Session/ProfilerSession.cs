@@ -37,7 +37,8 @@ namespace Whitebox.Core.Session
 
         public void Start()
         {
-            ThreadPool.QueueUserWorkItem(WaitForConnection);
+            var waitThread = new System.Threading.Thread(WaitForConnection);
+            waitThread.Start();
         }
 
         void Update(object state)

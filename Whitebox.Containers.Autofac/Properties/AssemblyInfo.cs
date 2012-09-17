@@ -35,4 +35,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly: InternalsVisibleTo("Whitebox.Containers.Autofac.Tests")]
+[assembly: InternalsVisibleTo("Whitebox.Containers.Autofac.Tests, PublicKey=00240000048000009400000006020000002400005253413100040000010001003b3c52439b88e49c3e195d7342b3cacf59e140674a37f3f15bad157389d9fe53e3d30cc692f7abb1cfaf4d4b7c08166a118704fc2f236b8c96140a038f57bf9fcc33a0244c13bf29be66a444670949835e912a71c69d6163d215c820ee6dd161ec14d56b5b2df7f7b1369e314bbbf27ef52583814a62cc5cdd844d7b3b8c549f")]

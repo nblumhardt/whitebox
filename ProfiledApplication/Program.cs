@@ -42,7 +42,7 @@ namespace ProfiledApplication
             var builder = new ContainerBuilder();
             builder.RegisterModule(new ConfigurationSettingsReader());
             builder.RegisterType<A>().SingleInstance();
-            builder.RegisterType<B>().PropertiesAutowired(allowCircularDependencies: true);
+            builder.RegisterType<B>().PropertiesAutowired(PropertyWiringFlags.AllowCircularDependencies);
             builder.RegisterType<C>().WithMetadata("M", 42).WithMetadata("N", "B!");
             builder.RegisterType<D>().SingleInstance();
             builder.RegisterGeneric(typeof (G<,>));

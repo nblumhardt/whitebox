@@ -25,7 +25,7 @@
                         <TreeView BorderThickness="0" ItemsSource="{Binding RootInstanceLookup, Converter={StaticResource OneToManyConverter}}">
                             <TreeView.ItemContainerStyle>
                                 <Style TargetType="{x:Type TreeViewItem}">
-                                    <Setter Property="IsExpanded" Value="True" />
+                                    <Setter Property="IsExpanded" Value="False" />
                                 </Style>
                             </TreeView.ItemContainerStyle>
                             <TreeView.ItemTemplate>
