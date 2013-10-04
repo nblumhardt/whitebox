@@ -86,7 +86,7 @@ namespace Whitebox.Profiler
 
             return builder.Register(c => new TView())
                 .OnActivated(e => e.Instance.DataContext = e.Context.Resolve<TModel>(e.Parameters))
-                .WithMetadata<IViewMetadata>(m => m.For(x => x.Title, title));
+                .WithMetadata<ViewMetadata>(m => m.For(x => x.Title, title));
         }
     }
 }

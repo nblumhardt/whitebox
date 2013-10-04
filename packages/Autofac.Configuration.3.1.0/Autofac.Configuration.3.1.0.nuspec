@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Autofac.Configuration</id>
+    <version>3.1.0</version>
+    <title>Autofac Configuration</title>
+    <authors>Autofac Contributors</authors>
+    <owners>Autofac Contributors</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://autofac.org/</projectUrl>
+    <iconUrl>http://code.google.com/p/autofac/logo</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>XML configuration support for Autofac</description>
+    <summary>Enables Autofac dependencies to be configured using XML configuration files.</summary>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="Autofac" version="3.1.0" />
+    </dependencies>
+  </metadata>
+</package>

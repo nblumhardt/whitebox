@@ -131,7 +131,7 @@ namespace Whitebox.Profiler.Features.Session
             Navigate(viewFactory(arg, this));
         }
 
-        void Navigate<TView>(Autofac.Features.Metadata.Meta<Autofac.Features.OwnedInstances.Owned<TView>, IViewMetadata> view)
+        void Navigate<TView>(Autofac.Features.Metadata.Meta<Autofac.Features.OwnedInstances.Owned<TView>, ViewMetadata> view)
             where TView : Control
         {
             Navigate(new NavigationEntry(view.Value.Value, view.Value, view.Metadata.Title));

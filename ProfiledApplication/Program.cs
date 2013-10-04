@@ -42,7 +42,7 @@ namespace ProfiledApplication
             var builder = new ContainerBuilder();
             builder.RegisterModule(new ConfigurationSettingsReader());
             builder.RegisterType<A>().SingleInstance();
-            builder.RegisterType<B>().PropertiesAutowired(PropertyWiringFlags.AllowCircularDependencies);
+            builder.RegisterType<B>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
             builder.RegisterType<C>().WithMetadata("M", 42).WithMetadata("N", "B!");
             builder.RegisterType<D>().SingleInstance();
             builder.RegisterGeneric(typeof (G<,>));
@@ -68,11 +68,6 @@ namespace ProfiledApplication
 
                     var ov = ls2.Resolve<Owned<C>>();
                     Console.WriteLine("Resolved an {0}", ov);
-                }
-
-                for (int i = 0; i < 5; i++)
-                {
-                    container.Resolve<C>();
                 }
             }
 

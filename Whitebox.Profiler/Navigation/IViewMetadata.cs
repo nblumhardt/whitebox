@@ -1,7 +1,7 @@
 ﻿namespace Whitebox.Profiler.Navigation
 {
-    public interface IViewMetadata
+    public class ViewMetadata
     {
-        string Title { get; }
+        public string Title { get; set; }
     }
 }
