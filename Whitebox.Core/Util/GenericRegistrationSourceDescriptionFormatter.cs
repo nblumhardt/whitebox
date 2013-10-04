@@ -20,10 +20,9 @@ namespace Whitebox.Core.Util
         public static bool TryFormat(string description, out string genericDescription)
         {
             var d = GenericRegistrationSourceDescription.TryParse(description);
-            var s = d as ISuccess<string>;
-            if (s != null)
+            if (d.WasSuccessful)
             {
-                genericDescription = s.Result;
+                genericDescription = d.Value;
                 return true;
             }
 
@@ -31,7 +30,7 @@ namespace Whitebox.Core.Util
             return false;
         }
 
-        static readonly string[] ArgNames = new[] { "T", "U", "V", "W", "X", "Y", "Z" };
+        static readonly string[] ArgNames = { "T", "U", "V", "W", "X", "Y", "Z" };
 
         static string FormatGenericTypeName(string simpleName, int argCount)
         {

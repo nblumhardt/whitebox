@@ -114,5 +114,23 @@ namespace Whitebox.Core.Tests.Util
                 Assert.AreEqual("Meta<Func<Owned<ITask>>>[]", _parsed.DisplayName);
             }
         }
+
+        [TestFixture]
+        public class WhenParsingAGenericThatHasANestedPrivate
+        {
+            TypeIdentifier _parsed;
+
+            [SetUp]
+            public void SetUp()
+            {
+                _parsed = TypeIdentifier.Parse("UserNamespace.Submodule.Class`1+NestedSubclass, UserNamespace.Submodule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+            }
+
+            [Test]
+            public void TheOuterTypeNameIsCorrect()
+            {
+                Assert.AreEqual("UserNamespace.Submodule.Class+NestedSubclass", _parsed.FullName);
+            }
+        }
     }
 }

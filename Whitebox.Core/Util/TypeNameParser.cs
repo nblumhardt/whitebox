@@ -11,7 +11,7 @@ namespace Whitebox.Core.Util
         static readonly Parser<char> Comma = Parse.Char(',');
 
         static readonly Parser<char> TypeSimpleNameChar =
-            Parse.LetterOrDigit.Or(Parse.Char(c => "._+-<>".Contains(c), "type name char"));
+            Parse.LetterOrDigit.Or(Parse.Char(c => "._-<>".Contains(c), "type name char"));
 
         static readonly Parser<string> ArrayModifiers =
             Parse.Char('[').Or(Parse.Char(']')).AtLeastOnce().Text();
@@ -24,6 +24,9 @@ namespace Whitebox.Core.Util
 
         static readonly Parser<string> AssemblyName =
             AssemblyNameChar.AtLeastOnce().Text();
+
+        static readonly Parser<string> NestedTypeName =
+            Parse.Char('+').Then(_ => TypeSimpleName);
 
         static readonly Parser<TypeIdentifier> GenericArgument =
             from openDelim in Parse.Char('[')
@@ -81,13 +84,15 @@ namespace Whitebox.Core.Util
             from simpleName in TypeSimpleName
             from argCount in GenericArgumentCount.XOr(Parse.Return(0))
             from args in GenericArgumentList.Or(Parse.Return(Enumerable.Empty<TypeIdentifier>()))
+            from nestedTypeName in NestedTypeName.XOr(Parse.Return(""))
             from mods in ArrayModifiers.XOr(Parse.Return(""))
             from comma in Comma.Token()
             from assemblyName in AssemblyName
             from version in Attribute("Version", Version)
             from culture in Attribute("Culture", Culture)
             from publicKeyToken in Attribute("PublicKeyToken", PublicKeyToken)
-            select new TypeIdentifier(simpleName, assemblyName, version, culture, publicKeyToken, argCount, args, mods);
+            let fullName = simpleName + (nestedTypeName == "" ? "" : ("+" + nestedTypeName))
+            select new TypeIdentifier(fullName, assemblyName, version, culture, publicKeyToken, argCount, args, mods);
 
         public static TypeIdentifier ParseAssemblyQualifiedTypeName(string assemblyQualifiedTypeName)
         {
