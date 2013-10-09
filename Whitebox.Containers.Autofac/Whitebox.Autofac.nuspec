@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Whitebox.Autofac</id>
+    <version>0.2.0.0</version>
+    <title>Whitebox</title>
+    <authors>Whitebox contributors</authors>
+    <owners>Whitebox contributors</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://whitebox.googlecode.com/</projectUrl>
+    <iconUrl>http://code.google.com/p/whitebox/logo</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A module for connecting Autofac applications to the Whitebox profiler.</description>
+    <dependencies>
+      <dependency id="Autofac" version="3.0.0" />
+      <dependency id="Whitebox" version="0.2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Whitebox.Containers.Autofac.dll" target="lib/net40" />
+  </files>
+</package>

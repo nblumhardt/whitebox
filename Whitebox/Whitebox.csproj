@@ -80,9 +80,10 @@
     <Compile Include="Util\Disposable.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Whitebox.snk" >
+    <None Include="..\Whitebox.snk">
       <Link>Properties\Whitebox.snk</Link>
     </None>
+    <None Include="Whitebox.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
