@@ -132,5 +132,23 @@ namespace Whitebox.Core.Tests.Util
                 Assert.AreEqual("UserNamespace.Submodule.Class+NestedSubclass", _parsed.FullName);
             }
         }
+
+        [TestFixture]
+        public class WhenTypeUsesContravariance
+        {
+            TypeIdentifier _parsed;
+
+            [SetUp]
+            public void SetUp()
+            {
+                _parsed = TypeIdentifier.Parse("Autofac.Features.Variance.ContravariantRegistrationSource+<>c__DisplayClass8+<>c__DisplayClassa, Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da");
+            }
+
+            [Test, Ignore("Need to look into what this type name actually means; see #16")]
+            public void TheOuterTypeNameIsCorrect()
+            {
+                Assert.AreEqual("Autofac.Features.Variance.ContravariantRegistrationSource", _parsed.FullName);
+            }
+        }
     }
 }

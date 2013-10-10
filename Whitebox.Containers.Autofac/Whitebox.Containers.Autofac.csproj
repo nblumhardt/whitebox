@@ -64,7 +64,9 @@
       <Link>Properties\Whitebox.snk</Link>
     </None>
     <None Include="packages.config" />
-    <None Include="Whitebox.Autofac.nuspec" />
+    <None Include="Whitebox.Autofac.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
