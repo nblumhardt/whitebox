@@ -44,6 +44,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analytics\LifetimeDisposal\LifetimeDisposalDetector.cs" />
     <Compile Include="Analytics\TrackedInRootScope\TrackedInstanceInRootScopeDetector.cs" />
     <Compile Include="Analytics\Leaks\LastNActivationsScopeTracker.cs" />
     <Compile Include="Analytics\Leaks\RootScopeLeakDetector.cs" />
