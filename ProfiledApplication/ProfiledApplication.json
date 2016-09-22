@@ -1,0 +1,5 @@
+﻿{
+  "modules": [{
+    "type": "Whitebox.Containers.Autofac.WhiteboxProfilingModule, Whitebox.Containers.Autofac"
+  }]
+}
