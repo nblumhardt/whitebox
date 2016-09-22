@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Configuration;
 using Autofac.Features.OwnedInstances;
+using Microsoft.Extensions.Configuration;
 
 namespace ProfiledApplication
 {
@@ -39,8 +40,12 @@ namespace ProfiledApplication
         {
             Console.WriteLine("Started.");
 
+            var config = new ConfigurationBuilder();
+            config.AddJsonFile("ProfiledApplication.json");
+            var module = new ConfigurationModule(config.Build());
+
             var builder = new ContainerBuilder();
-            builder.RegisterModule(new ConfigurationSettingsReader());
+            builder.RegisterModule(module);
             builder.RegisterType<A>().SingleInstance();
             builder.RegisterType<B>().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
             builder.RegisterType<C>().WithMetadata("M", 42).WithMetadata("N", "B!");

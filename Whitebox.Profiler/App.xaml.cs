@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Autofac;
 using Autofac.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace Whitebox.Profiler
 {
@@ -10,8 +11,12 @@ namespace Whitebox.Profiler
         {
             base.OnStartup(e);
 
+            var config = new ConfigurationBuilder();
+            config.AddJsonFile("WhiteboxProfilerAutofac.json");
+            var module = new ConfigurationModule(config.Build());
+
             var builder = new ContainerBuilder();
-            builder.RegisterModule(new ConfigurationSettingsReader());
+            builder.RegisterModule(module);
             var container = builder.Build();
 
             var mainWindow = container.Resolve<ProfilerWindowView>();

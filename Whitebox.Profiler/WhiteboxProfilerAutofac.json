@@ -1,0 +1,10 @@
+﻿{
+  "modules": [
+    {
+      "type": "Whitebox.Profiler.AppModule, Whitebox.Profiler"
+    },
+    {
+      "type": "Whitebox.Core.CoreModule, Whitebox.Core"
+    }
+  ]
+}
