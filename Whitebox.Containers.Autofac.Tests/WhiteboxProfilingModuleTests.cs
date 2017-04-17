@@ -213,7 +213,7 @@ namespace Whitebox.Containers.Autofac.Tests
             [Test]
             public void TheResolveOperationBeginningMessageIncludesAnId()
             {
-                Assert.IsNotNullOrEmpty(_resolveOperationBeginning.ResolveOperation.Id);
+                Assert.IsNotEmpty(_resolveOperationBeginning.ResolveOperation.Id);
             }
 
             [Test]

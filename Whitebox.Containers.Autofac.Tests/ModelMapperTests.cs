@@ -61,7 +61,8 @@ namespace Whitebox.Containers.Autofac.Tests
             [Test]
             public void TheMetadataOfTheComponentIsMapped()
             {
-                Assert.AreEqual(1, _componentModel.Metadata.Count);
+                // This includes the internal `__RegistrationOrder` metadata; we might wish to hide this from the profiler.
+                Assert.AreEqual(2, _componentModel.Metadata.Count);
                 Assert.AreEqual(MetadataValue.ToString(), _componentModel.Metadata[MetadataKey]);
             }
 
