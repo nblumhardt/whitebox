@@ -2,6 +2,8 @@
 
 Whitebox is a profiler for the Autofac IoC container.
 
+> This project was started in 2011 but never finished. Part of it moved to the _Autofac.Analysis_ repository, but work stalled there too. This incarnation of the code, which includes the GUI, is currently being updated and modernized.
+
 ![Screenshot](https://raw.githubusercontent.com/nblumhardt/whitebox/master/Assets/Whitebox-Screenshot.png)
 
 ### Why should I care?
@@ -22,9 +24,9 @@ Whitebox eliminates these obstacles to productivity.
  * It shows you exactly what is going on in the container, in real-time, as the application runs.
  * It helps identify common traps and problematic usage patterns, along with suggestions for correcting them.
 
-### Why call it a ëProfilerí?
+### Why call it a ‚ÄòProfiler‚Äô?
 
-There are two ëobviousí approaches to exploratory tooling for IoC.
+There are two ‚Äòobvious‚Äô approaches to exploratory tooling for IoC.
 
 Static analysis is the first and most academically pleasing way to get information about a composition. This 
 is the approach taken by MEFX.exe and Visual MEFX.
@@ -33,20 +35,20 @@ The greatest benefit of static analysis is that its results are available at bui
 a composition can be gained, for example, in an IDE-based browser, or a continuous integration server.
 
 The limitation of a static analysis approach is that unless very strict rules are followed both in how the IoC 
-container and the client application are constructed, the picture of ìrealityî may be different at build time 
+container and the client application are constructed, the picture of ‚Äúreality‚Äù may be different at build time 
 vs. runtime. Modern IoC containers are very dynamic, and applications themselves are highly configurable, so 
 static analysis turns out to be a poor choice for most users today.
 
-Dynamic analysis or just plain old ëTracingí is the second approach to understanding what is going on in an 
+Dynamic analysis or just plain old ‚ÄòTracing‚Äô is the second approach to understanding what is going on in an 
 IoC container. The goal of tracing is to present an accurate picture of exactly what occurs during program 
 execution. When compared with other development tools already in use, the group that most accurately reflects 
 this aim are generally called profilers.
 
-### I donít get it: tracing surely isnít anything new!
+### I don‚Äôt get it: tracing surely isn‚Äôt anything new!
 
-Whitebox doesnít show you a raw stream of trace events. Instead, it reconstructs the higher-level operations 
+Whitebox doesn‚Äôt show you a raw stream of trace events. Instead, it reconstructs the higher-level operations 
 and implied dependency structure in an integrated view.
 
-Each of the ëresolve operationí events is a single call to the containerís Resolve() method (or an equivalent.)
+Each of the ‚Äòresolve operation‚Äô events is a single call to the container‚Äôs Resolve() method (or an equivalent.)
 The event shows where the operation occurred, but more importantly, clicking on the event will show how the 
 resultant object graph was built.
