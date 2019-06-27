@@ -2,7 +2,7 @@
 
 Whitebox is a profiler for the Autofac IoC container.
 
-> This project is no longer under development. Check out [_Autofac.Analysis_](https:/github.com/nblumhardt/autofac-analysis) for an updated alternative.
+> This project is no longer under development. Check out [_Autofac.Analysis_](https://github.com/nblumhardt/autofac-analysis) for an updated alternative.
 
 ![Screenshot](https://raw.githubusercontent.com/nblumhardt/whitebox/master/Assets/Whitebox-Screenshot.png)
 
